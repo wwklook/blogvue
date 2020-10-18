@@ -1,30 +1,65 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="box">
+    <headers />
+    <div class="main">
+      <left />
+      <div class="content">
+        <router-view />
+      </div>
+    </div>
   </div>
-  <router-view/>
 </template>
 
+<script>
+import Left from "@/views/home/Left.vue";
+import Headers from "@/views/home/Headers.vue";
+export default {
+  components: {
+    Left,
+    Headers
+  },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import "~@/assets/common.css";
+body {
+  margin: 0 auto;
+  background: #e6e6e6;
+  background-attachment: fixed;
+  background-size: cover;
+  /* user-select: none;
+  -webkit-user-seletct: none;
+  -moz-user-seletct: none;
+  -ms-user-seletct: none; */
 }
 
-#nav {
-  padding: 30px;
+a {
+  text-decoration: none;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+ul {
+  padding: 5px;
+  margin: 0;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+li {
+  list-style: none;
+}
+
+img {
+  cursor: pointer;
+}
+.content {
+  width: 700px;
+  margin: 20px;
+  flex-grow: 0.5;
+}
+
+.main {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 </style>
