@@ -64,7 +64,7 @@
 
 
 <script>
-import { getIlove } from "@/network/blog.js";
+import { getIlove, getSongInfoAndLrc } from "@/network/blog.js";
 
 export default {
   name: "Music",
@@ -76,13 +76,12 @@ export default {
       time: "00:00/00:00",
       isClickSlider: false,
       isPlaying: false,
-      lrclist: [],
+      lrclist: "",
       lrcindex: 0,
     };
   },
   created() {
     getIlove().then((res) => {
-      console.log(res);
       if (res.data.musicList.length > 0) {
         this.music_list = [];
       }
@@ -94,8 +93,13 @@ export default {
   methods: {
     play(key) {
       this.index = key;
-      this.isPlaying = true;
-      this.url = this.music_list[key].url;
+      console.log(this.musicList);
+      let rid = this.musicList[this.index].rid;
+      getSongInfoAndLrc(this.index).then(res => {
+        this.lrclist = res.data.lrc
+        this.url = res.data.url
+        this.isPlaying = true;
+      })
     },
     nextSong() {
       if (this.index < this.music_list.length - 1) {
@@ -166,6 +170,58 @@ export default {
     },
   },
 };
+
+function toTime(x) {
+  let m = parseInt(x / 60); // 分
+  let s = parseInt(x % 60); // 秒
+  if (m < 10) {
+    m = "0" + m;
+  };
+  if (s < 10) {
+    s = "0" + s;
+  };
+  return m + ":" + s
+}
+
+function animate(obj, json, fn) {
+  clearInterval(obj.timer);
+  obj.timer = setInterval(function() {
+    var flag = true;
+    for (var k in json) {
+      if (k === "opacity") {
+        var leader = getComputedStyle(obj, null)[k] * 100;
+        var tag = json[k] * 100;
+        var step = (tag - leader) / 15;
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        leader += step;
+        obj.style[k] = leader / 100;
+      } else if (k === "scrollTop") {
+        var leader = obj[k];
+        var tag = json[k];
+        var step = (tag - leader) / 15;
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        leader += step;
+        obj[k] = leader;
+      } else {
+        var leader = parseInt(getComputedStyle(obj, null)[k]) || 0;
+        var tag = json[k];
+        var step = (tag - leader) / 15;
+        step = step > 0 ? Math.ceil(step) : Math.floor(step);
+        leader += step;
+        obj.style[k] = leader + "px";
+      }
+      if (leader !== tag) {
+        flag = false;
+      }
+    }
+    if (flag) {
+      clearInterval(obj.timer);
+      if (fn) {
+        fn();
+      }
+    }
+  }, 15);
+}
 </script>
 
 <style scoped>

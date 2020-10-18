@@ -6,6 +6,13 @@ export function getIlove() {
     })
 }
 
+export function getSongInfoAndLrc(rid) {
+    return requests({
+        url: '/get_songinfoandlrc',
+        params: { rid }
+    })
+}
+
 export function postBlog(title, summary, content) {
     return requests({
         url: '/postblog',
