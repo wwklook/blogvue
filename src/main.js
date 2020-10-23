@@ -4,11 +4,12 @@ import router from './router'
 import store from './store'
 
 import hljs from "highlight.js";
+import { isLogin } from "@/network/blog";
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(store).use(router).mount('#app')
-
+app.config.productionTip = false;
+app.use(store).use(router).mount('#app');
 
 app.directive("highlight", function(el) {
     let blocks = el.querySelectorAll("pre code");
@@ -25,3 +26,15 @@ app.directive("highlight", function(el) {
         block.parentNode.innerHTML = block.parentNode.innerHTML + linesNum;
     });
 });
+
+
+// 查看登录状态 并获取数据
+isLogin().then(res=>{
+  if (res.data=="yes"){
+    store.commit("changeLoginState", true);
+  } else {
+    console.log("Not logged in, welcome to '/login.html'");
+  }
+})
+
+app.$store = store;

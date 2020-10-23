@@ -9,11 +9,15 @@
       </div>
     </div>
     <div class="login">
+      <div class="right" v-if="isLogin">
+        <a href="/register.html">注册</a>
+      </div>
+      <div class="right" v-if="isLogin">
+        <a href="/login.html">登录</a>
+      </div>
       <img
         src="https://i0.hdslb.com/bfs/face/member/noface.jpg@150w_150h.jpg"
       />
-      <div>登录</div>
-      <div>注册</div>
     </div>
   </div>
 </template>
@@ -21,27 +25,21 @@
 <script>
 export default {
   components: {},
+  data(){
+    return {
+      islogin: false,
+    }
+  },
+  created(){
+   this.isLogin = this.$store.state.isLogin;
+  },
+  methods: {
+
+  },
 };
 </script>
 
 <style scoped>
-.label {
-  position: relative;
-}
-
-.label::after {
-  content:'';
-  width: 0px;
-  border-bottom: 2.5px solid blue;
-  transition: width 0.2s cubic-bezier(0, 0.83, 0.72, 1.03);
-  position: absolute;
-  bottom: 0;
-}
-
-.label:hover::after{
-  width: 100%;
-}
-
 .header {
   width: 100%;
   height: 100px;
@@ -69,9 +67,7 @@ export default {
 }
 
 .login {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 250px;
 }
 
 .login img {
@@ -79,6 +75,7 @@ export default {
   height: 48px;
   border-radius: 50%;
   margin: 5px;
+  float: right;
 }
 
 .home {
@@ -93,6 +90,7 @@ export default {
 }
 
 .label {
+  position: relative;
   margin-left: 30px;
   color: #7bbfea;
   font-size: 25px;
@@ -101,7 +99,29 @@ export default {
   cursor: pointer;
 }
 
-.label:hover {
+.right {
+  margin-left: 10px;
+  float: right;
+  position: relative;
+  color: #7bbfea;
+  font-size: 25px;
+}
+
+.label:hover, .right:hover {
   color: #66ccff;
 }
+
+.label::after, .right::after {
+  content:'';
+  width: 0px;
+  border-bottom: 2.5px solid blue;
+  transition: width 0.2s cubic-bezier(0, 0.83, 0.72, 1.03);
+  position: absolute;
+  bottom: 0;
+}
+
+.label:hover::after, .right:hover::after{
+  width: 100%;
+}
+
 </style>
