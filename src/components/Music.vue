@@ -93,9 +93,8 @@ export default {
   methods: {
     play(key) {
       this.index = key;
-      console.log(this.musicList);
-      let rid = this.musicList[this.index].rid;
-      getSongInfoAndLrc(this.index).then(res => {
+      let rid = this.music_list[this.index].rid;
+      getSongInfoAndLrc(rid).then(res => {
         this.lrclist = res.data.lrc
         this.url = res.data.url
         this.isPlaying = true;
