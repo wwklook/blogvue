@@ -1,12 +1,21 @@
 <template>
   <div class="box">
-    <content />
+    <headers />
+    <div class="main">
+      <left />
+      <div class="content">
+        <div class="box">
+          <router-view />
+        </div>
+      </div>
+    </div>
   </div>
+
 </template>
 
 <script>
-
-import Content from "@/views/home/Content.vue";
+import Left from "@/views/home/Left.vue";
+import Headers from "@/views/home/Headers.vue";
 
 export default {
   name: "Home",
@@ -14,7 +23,8 @@ export default {
     return {};
   },
   components: {
-    Content,
+    Left,
+    Headers
   },
 };
 </script>
