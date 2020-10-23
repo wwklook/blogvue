@@ -15,8 +15,8 @@
 </template>
 
 <script>
-import Music from "@/components/Music.vue";
-import Calendar from "@/components/Calendar.vue";
+import Music from "@/components/common/Music.vue";
+import Calendar from "@/components/common/Calendar.vue";
 export default {
   components: {
     Music,

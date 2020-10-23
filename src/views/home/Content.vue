@@ -16,6 +16,9 @@ export default {
       context_data: [{ url: "/blog", text: "测试博客" }],
     };
   },
+  created(){
+      
+  }
 };
 </script>
 

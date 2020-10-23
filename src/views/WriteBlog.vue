@@ -69,10 +69,10 @@ export default {
       this.mark = marked(this.content);
     },
     submit() {
-      // postBlog
+      // addBlog
       // console.log(this.content);
       // console.log(this.mark);
-      postBlog(this.title, this.summary, this.content)
+      addBlog(this.title, this.summary, this.content)
     },
   },
 };

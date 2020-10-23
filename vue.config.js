@@ -5,6 +5,6 @@ function resolve(dir) {
 }
 module.exports = {
   assetsDir: 'blog_static',
-  indexPath: 'blog.html'
+  indexPath: 'blog.html',
   //publicPath: process.env.NODE_ENV === 'production' ? './' : '/'
 }
