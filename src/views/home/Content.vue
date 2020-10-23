@@ -1,11 +1,9 @@
 <template>
   <div>
-    <a :href="item.url" v-for="(item, i) in context_data" :key="i">
       <div class="context">
-        {{ item.text }}
+        测试博客
       </div>
-    </a>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -13,11 +11,13 @@ export default {
   name: "Content",
   data() {
     return {
-      context_data: [{ url: "/blog", text: "测试博客" }],
     };
   },
   created(){
       
+  },
+  methods: {
+
   }
 };
 </script>

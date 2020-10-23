@@ -1,22 +1,11 @@
 <template>
-  <div class="box">
-    <headers />
-    <div class="main">
-      <left />
-      <div class="content">
-        <router-view />
-      </div>
-    </div>
-  </div>
+  <router-view />
 </template>
 
 <script>
-import Left from "@/views/home/Left.vue";
-import Headers from "@/views/home/Headers.vue";
 export default {
   components: {
-    Left,
-    Headers
+
   },
 };
 </script>
