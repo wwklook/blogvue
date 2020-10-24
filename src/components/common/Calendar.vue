@@ -116,14 +116,12 @@ export default {
   flex-wrap: wrap;
 }
 #calendars li {
-  width: 35px;
-  height: 35px;
+  width: 39px;
+  height: 39px;
   padding: 0 3px;
   line-height: 35px;
   align-items: center;
   text-align: center;
-  border: 2px solid white;
-  border-radius: 50%;
 }
 #calendars h4 {
   font-size: 18px;
@@ -131,9 +129,7 @@ export default {
   width: 330px;
   text-align: center;
 }
-#calendars li:hover {
-  cursor: pointer;
-}
+
 .calendar-header {
   opacity: 0.8;
 }

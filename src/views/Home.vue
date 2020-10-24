@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Left from "@/views/home/Left.vue";
-import Headers from "@/views/home/Headers.vue";
+import Left from "@/components/home/Left.vue";
+import Headers from "@/components/home/Headers.vue";
 
 export default {
   name: "Home",

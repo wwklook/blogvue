@@ -1,46 +1,35 @@
 <template>
   <div>
-      <div class="context">
-        测试博客
-      </div>
+    <div v-for="(data, key) in data" :key="key">
+      <acticle :data="data" />
     </div>
+  </div>
 </template>
 
 <script>
+import { getBlog } from "@/network/blog.js";
+import Acticle from "@/components/blog/Acticle.vue";
 export default {
   name: "Content",
+  components: {
+    Acticle
+  },
   data() {
     return {
+      data: [
+      ],
     };
   },
-  created(){
-      
+  created() {
+    getBlog().then(res => {
+      this.data = res.data.data;
+    })
   },
   methods: {
-
-  }
+    
+  },
 };
 </script>
 
 <style scoped>
-.context {
-  width: 100%;
-  height: 400px;
-  opacity: 1;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  line-height: 380px;
-  font-size: 50px;
-  color: #66ccff;
-  text-align: center;
-  background-color: white;
-  opacity: 0.7;
-  margin-bottom: 40px;
-  transition: 1s;
-}
-
-.context:hover {
-  /* opacity: 1; */
-  box-shadow: 0 0 5px #adadad, 0 0 25px #adadad, 0 0 25px #adadad, 0 0 25px #adadad;
-}
 </style>
