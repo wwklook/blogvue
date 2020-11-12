@@ -11,6 +11,7 @@ const app = createApp(App);
 app.config.productionTip = false;
 app.use(store).use(router).mount('#app');
 
+app.$store = store;
 app.directive("highlight", function(el) {
     let blocks = el.querySelectorAll("pre code");
     blocks.forEach(block => {
@@ -37,4 +38,3 @@ isLogin().then(res=>{
   }
 })
 
-app.$store = store;

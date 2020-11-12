@@ -1,11 +1,12 @@
 <template>
   <div>
     <div class="top">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      markdown
+      <div>
+        markdown
+      </div>
+      <div>
+        效果
+      </div>
     </div>
     <div class="note">
       <textarea
@@ -33,7 +34,7 @@ import hljs from "highlight.js";
 import javascript from "highlight.js/lib/languages/javascript";
 import "highlight.js/styles/monokai-sublime.css";
 
-import { postBlog } from "@/network/blog.js";
+import { addBlog } from "@/network/blog.js";
 
 export default {
   data() {
@@ -69,9 +70,6 @@ export default {
       this.mark = marked(this.content);
     },
     submit() {
-      // addBlog
-      // console.log(this.content);
-      // console.log(this.mark);
       addBlog(this.title, this.summary, this.content)
     },
   },
@@ -79,27 +77,23 @@ export default {
 </script>
 
 <style scoped>
-textarea {
-  resize: none;
-  border: none;
-	outline: none;
-	font-size: 25px;
-}
-
-
 input::-webkit-input-placeholder {
 	color: #CCC;
-	font-size: 14px
+	font-size: 14px;
 }
 
 input {
 	border: none;
 	outline: none;
 	font-size: 25px;
-  width: 100%;
+  width: 80%;
 	height: 30px;
   margin: 10px 0px;
 	border-bottom: 3px solid #66ccff;
+}
+
+li {
+  list-style: decimal;
 }
 
 button {
@@ -109,8 +103,13 @@ button {
 	background: linear-gradient(120deg, #0c6dad, #bb5fe2);
 }
 
+
+.info {
+  text-align: center;
+}
+
 .info textarea{
-  width: 100%;
+  width: 80%;
 	height: 300px;
   margin: 10px 0px;
 	border-bottom: 3px solid #66ccff;
@@ -123,6 +122,8 @@ button {
 }
 
 .note {
+  margin: 0 auto;
+  width: 80%;
   display: flex;
   height: calc(100vh - 98px);
 }
@@ -147,94 +148,15 @@ button {
 
 .top {
   line-height: 49px;
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.top div {
+  width: 50%;
   text-align: center;
-  position: relative;
-  color: #03e9f4;
-  transition: 0.5s;
-  letter-spacing: 4px;
-  overflow: hidden;
+  font-size: 25px;
 }
 
-.top span {
-  position: absolute;
-}
-
-.top span:nth-child(1) {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #03e9f4);
-  animation: animate1 1s linear infinite;
-}
-
-.top span:nth-child(2) {
-  top: -100%;
-  right: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
-  animation: animate2 1s linear infinite;
-  animation-delay: 0.25s;
-}
-
-.top span:nth-child(3) {
-  bottom: 0;
-  right: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
-  animation: animate3 1s linear infinite;
-  animation-delay: 0.5s;
-}
-
-.top span:nth-child(4) {
-  bottom: -100%;
-  left: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
-  animation: animate4 1s linear infinite;
-  animation-delay: 0.75s;
-}
-
-@keyframes animate1 {
-  0% {
-    left: -100%;
-  }
-  50%,
-  100% {
-    left: 100%;
-  }
-}
-
-@keyframes animate2 {
-  0% {
-    top: -100%;
-  }
-  50%,
-  100% {
-    top: 100%;
-  }
-}
-
-@keyframes animate3 {
-  0% {
-    right: -100%;
-  }
-  50%,
-  100% {
-    right: 100%;
-  }
-}
-
-@keyframes animate4 {
-  0% {
-    bottom: -100%;
-  }
-  50%,
-  100% {
-    bottom: 100%;
-  }
-}
 </style>

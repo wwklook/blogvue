@@ -1,9 +1,9 @@
 <template>
-  <div>
-    <div v-for="(data, key) in data" :key="key">
+  <ul>
+    <li v-for="(data, key) in data" :key="key">
       <acticle :data="data" />
-    </div>
-  </div>
+    </li>
+  </ul>
 </template>
 
 <script>
