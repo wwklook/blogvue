@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export function requests(config) {
   const instance = axios.create({
-    baseURL: "http://www.wwklook.com/",
+    baseURL: "https://www.wwklook.com/",
     timeout: 10000,
   })
   //   instance.interceptors.response.use(res => {
