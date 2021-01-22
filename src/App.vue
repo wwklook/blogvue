@@ -32,10 +32,6 @@ ul {
   margin: 0;
 }
 
-li {
-  list-style: none;
-}
-
 img {
   cursor: pointer;
 }

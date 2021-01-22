@@ -19,9 +19,10 @@ export function getSongInfoAndLrc(rid) {
   })
 }
 
-export function getBlog() {
+export function getBlog(p=1) {
   return requests({
     url: '/get_blog',
+    params: { p }
   })
 }
 

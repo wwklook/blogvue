@@ -1,7 +1,7 @@
 <template>
   <ul>
-    <li v-for="(data, key) in data" :key="key">
-      <acticle :data="data" />
+    <li v-for="(acticle, key) in acticles" :key="key">
+      <acticle :data="acticle" />
     </li>
   </ul>
 </template>
@@ -16,13 +16,15 @@ export default {
   },
   data() {
     return {
-      data: [
-      ],
+      acticles: [],
+      p: 1,
+      total: 0
     };
   },
   created() {
-    getBlog().then(res => {
-      this.data = res.data.data;
+    getBlog(this.p).then(res => {
+      this.acticles = res.data.data;
+      this.total = res.data.total
     })
   },
   methods: {
@@ -32,4 +34,7 @@ export default {
 </script>
 
 <style scoped>
+li {
+  list-style: none;
+}
 </style>

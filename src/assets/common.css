@@ -1,99 +1,111 @@
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:visited {
-    color: #000;
+  color: #000;
 }
 
 textarea {
   resize: none;
   border: none;
-	outline: none;
-	font-size: 25px;
+  outline: none;
+  font-size: 25px;
 }
-
 
 /* 代码框样式 */
 
 pre {
-    position: relative;
-    padding-left: 25px;
-    background: #2d2d2d !important;
-    border-radius: 5px;
-    width: 90%;
+  position: relative;
+  padding-left: 25px;
+  background: #7b7b7b !important;
+  border-radius: 5px;
+  width: 90%;
+}
+
+code {
+  background: rgba(27,31,35,0.05) !important;
+  padding: 4px;
+}
+
+blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 8px solid #dfe2e5;
+  background-color: #efefef;
+  padding: 5px;
+  margin-left: 5px;
 }
 
 .hljs {
-    background: #2d2d2d !important;
-    width: 95%;
+  background: #7b7b7b !important;
+  width: 95%;
 }
 
 .line-numbers-rows {
-    position: absolute;
-    pointer-events: none;
-    top: 7px;
-    left: -10px;
-    font-size: 100%;
-    width: 30px;
-    text-align: center;
-    letter-spacing: -1px;
-    border-right: 2px solid rgba(226, 226, 226, 0.96);
-    user-select: none;
-    counter-reset: linenumber;
+  position: absolute;
+  pointer-events: none;
+  top: 7px;
+  left: -10px;
+  font-size: 100%;
+  width: 30px;
+  text-align: center;
+  letter-spacing: -1px;
+  border-right: 2px solid rgba(226, 226, 226, 0.96);
+  user-select: none;
+  counter-reset: linenumber;
 }
 
 .line-numbers-rows span {
-    pointer-events: none;
-    display: block;
-    counter-increment: linenumber;
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
 }
 
 .line-numbers-rows span:before {
-    content: counter(linenumber);
-    margin-left: 7px;
-    color: #999;
-    display: block;
-    text-align: center;
+  content: counter(linenumber);
+  margin-left: 7px;
+  color: #999;
+  display: block;
+  text-align: center;
 }
-
 
 /* 翻转 */
 
 .spinner {
-    width: 60px;
-    height: 60px;
-    background: #67CF22;
-    margin: 100px auto;
-    -webkit-animation: rotateplane 1.2s infinite ease-in-out;
-    animation: rotateplane 1.2s infinite ease-in-out;
+  width: 60px;
+  height: 60px;
+  background: #67CF22;
+  margin: 100px auto;
+  -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  animation: rotateplane 1.2s infinite ease-in-out;
 }
 
 @-webkit-keyframes rotateplane {
-    0% {
-        -webkit-transform: perspective(220px);
-    }
-    50% {
-        -webkit-transform: perspective(220px) rotateY(180deg);
-    }
-    100% {
-        -webkit-transform: perspective(220px) rotateY(180deg) rotateX(180deg);
-    }
+  0% {
+    -webkit-transform: perspective(220px);
+  }
+  50% {
+    -webkit-transform: perspective(220px) rotateY(180deg);
+  }
+  100% {
+    -webkit-transform: perspective(220px) rotateY(180deg) rotateX(180deg);
+  }
 }
 
 @keyframes rotateplane {
-    0% {
-        transform: perspective(120px) rotateY(0) rotateX(0);
-        -webkit-transform: perspective(220px) rotateY(0) rotateX(0);
-    }
-    50% {
-        transform: perspective(120px) rotateY(0) rotateX(-180.1deg);
-        -webkit-transform: perspective(220px) rotateY(0) rotateX(-180.1deg);
-    }
-    100% {
-        transform: perspective(120px) rotateY(-179.9deg) rotateX(-180deg);
-        -webkit-transform: perspective(220px) rotateY(-179.9deg) rotateX(-180deg);
-    }
+  0% {
+    transform: perspective(120px) rotateY(0) rotateX(0);
+    -webkit-transform: perspective(220px) rotateY(0) rotateX(0);
+  }
+  50% {
+    transform: perspective(120px) rotateY(0) rotateX(-180.1deg);
+    -webkit-transform: perspective(220px) rotateY(0) rotateX(-180.1deg);
+  }
+  100% {
+    transform: perspective(120px) rotateY(-179.9deg) rotateX(-180deg);
+    -webkit-transform: perspective(220px) rotateY(-179.9deg) rotateX(-180deg);
+  }
 }
 
 /* 流光特效
@@ -163,8 +175,7 @@ pre {
   0% {
     left: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     left: 100%;
   }
 }
@@ -173,8 +184,7 @@ pre {
   0% {
     top: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     top: 100%;
   }
 }
@@ -183,8 +193,7 @@ pre {
   0% {
     right: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     right: 100%;
   }
 }
@@ -193,8 +202,7 @@ pre {
   0% {
     bottom: -100%;
   }
-  50%,
-  100% {
+  50%, 100% {
     bottom: 100%;
   }
 }
