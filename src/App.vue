@@ -32,9 +32,6 @@ ul {
   margin: 0;
 }
 
-img {
-  cursor: pointer;
-}
 .content {
   width: 700px;
   margin: 20px;

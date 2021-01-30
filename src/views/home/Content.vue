@@ -1,34 +1,51 @@
 <template>
-  <ul>
-    <li v-for="(acticle, key) in acticles" :key="key">
-      <acticle :data="acticle" />
-    </li>
-  </ul>
+  <div>
+    <ul>
+      <li v-for="article in articles" :key="article.blog_id">
+        <article-item :data="article" />
+      </li>
+    </ul>
+    <pagination
+      :total="total"
+      :pn="pn"
+      :rn="5"
+      @changePage="changePage"
+    />
+  </div>
 </template>
 
 <script>
 import { getBlog } from "@/network/blog.js";
-import Acticle from "@/components/blog/Acticle.vue";
+import Pagination from "@/components/common/Pagination.vue";
+import ArticleItem from "@/components/blog/ArticleItem.vue";
 export default {
   name: "Content",
   components: {
-    Acticle
+    ArticleItem,
+    Pagination,
   },
   data() {
     return {
-      acticles: [],
-      p: 1,
-      total: 0
+      articles: [],
+      pn: 1,
+      total: 0,
     };
   },
   created() {
-    getBlog(this.p).then(res => {
-      this.acticles = res.data.data;
-      this.total = res.data.total
-    })
+    getBlog(this.pn).then((res) => {
+      this.articles = res.data.data;
+      this.total = res.data.total;
+    });
   },
   methods: {
-    
+    changePage(pn) {
+      getBlog(pn).then((res) => {
+        this.articles = res.data.data;
+        this.total = res.data.total;
+        this.pn = pn;
+        window.scrollTo(0, 0)
+      });
+    },
   },
 };
 </script>

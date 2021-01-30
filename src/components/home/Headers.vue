@@ -2,16 +2,29 @@
   <div class="header">
     <div class="index">
       <div class="home">
-        <a href=""><img src="@/assets/home/home.png" /></a>
+        <img src="@/assets/home/home.png" title="主页" @click="toHome" />
       </div>
-      <div class="label">
-        <a href="/">主页</a>
-      </div>
+      <ul class="categories">
+        <li
+          class="category"
+          v-for="category in categories"
+          :key="category.category_id"
+        >
+          {{ category.category_name }}
+          <ul class="sub">
+            <li
+              class="sub-item"
+              v-for="sub in category.sub_category"
+              :key="sub.id"
+              @click="toCategory(sub.id)"
+            >
+              {{ sub.name }}
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
     <div class="login">
-      <div class="right" v-if="!islogin">
-        <span @click="toreg">注册</span>
-      </div>
       <div class="right" v-if="!islogin">
         <span @click="tologin">登录</span>
       </div>
@@ -25,11 +38,14 @@
   </div>
 </template>
 <script>
+import { getCategory } from "@/network/blog.js";
+
 export default {
   components: {},
   data() {
     return {
       islogin: false,
+      categories: [],
     };
   },
   watch: {
@@ -38,18 +54,30 @@ export default {
       this.islogin = newval;
     },
   },
+  created() {
+    getCategory().then((res) => {
+      this.categories = res.data.categories;
+    });
+  },
   methods: {
-    toreg() {
-      window.location.href = "/register.html";
-    },
     tologin() {
       window.location.href = "/login.html";
+    },
+    toCategory(id) {
+      this.$router.push("/home/category/" + id);
+    },
+    toHome() {
+      this.$router.push("/home/content");
     },
   },
 };
 </script>
 
 <style scoped>
+li {
+  list-style: none;
+}
+
 .header {
   width: 100%;
   height: 88px;
@@ -94,16 +122,15 @@ export default {
   transition-delay: 0.2s;
 }
 
-.pro:hover img{
+.pro:hover img {
   width: 72px;
   height: 72px;
 }
 
-.pro:hover .profile{
+.pro:hover .profile {
   display: block;
   opacity: 1;
 }
-
 
 .login {
   width: 250px;
@@ -115,8 +142,9 @@ export default {
   border-radius: 50%;
   margin: 10px;
   float: right;
-  transition: .2s;
+  transition: 0.2s;
   z-index: 10;
+  cursor: pointer;
 }
 
 .home {
@@ -128,6 +156,7 @@ export default {
 .home img {
   width: 60px;
   height: 60px;
+  cursor: pointer;
 }
 
 .label {
@@ -169,5 +198,61 @@ export default {
 .label:hover::after,
 .right:hover::after {
   width: 100%;
+}
+
+.categories {
+  display: flex;
+  margin-left: 20px;
+}
+
+.category {
+  color: #000;
+  font-size: 22px;
+  transition: 0.5s;
+  margin: 20px 10px;
+  cursor: pointer;
+  position: relative;
+}
+
+.category:hover .sub,
+.category:hover .triangle {
+  opacity: 1;
+}
+
+.sub {
+  background-color: #666666;
+  opacity: 0;
+  transition: 0.4s;
+  border-radius: 12px;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0px -1px 5px 2px #000;
+}
+
+.sub::after {
+  width: 0;
+  height: 0px;
+  content: "";
+  border-style: solid;
+  border-width: 10px;
+  border-color: #666666 #666666 transparent transparent;
+  transform: rotate(-45deg);
+  box-shadow: 2px -2px 2px #000;
+  position: absolute;
+  top: -10px;
+  left: calc(50% - 10px);
+}
+
+.sub-item {
+  white-space: nowrap;
+  padding: 5px 20px;
+  font-size: 20px;
+  color: #fff;
+}
+
+.sub-item:hover {
+  color: #66ccff;
 }
 </style>
