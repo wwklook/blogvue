@@ -4,24 +4,27 @@
     <div class="summary">{{ data.summary }}</div>
     <div class="info">
       <img src="@/assets/blog/time.svg" title="创建时间" />
-      <span> {{ data.create_time }}</span>
-      <img src="@/assets/blog/like.svg" title="点赞数" />
-      <span> {{ data.like_number }}人点赞</span>
+      <span> {{ formatTime(data.create_time) }}</span>
       <img src="@/assets/blog/watch.svg" title="阅读数" />
-      <span> {{ data.read_number }}人阅读</span>
-      <img src="@/assets/blog/comment.svg" title="评论数" />
-      <span> {{ data.comment_number }}条评论</span>
+      <span> {{ data.read_number }}次阅读</span>
+      <div class="tag" v-for="(v, k) in data.tags.slice(0, 5)" :key="k">{{ v }}</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Acticle",
+  name: "Article",
   props: ["data"],
+  computed: {
+    formatTime(){
+      return function(str="") {
+        return str.replace('T', ' ').slice(0, -4)
+      }
+    }
+  },
   methods: {
     toContext() {
-      console.log(this.$router);
       this.$router.push('/home/blog/' + this.data.blog_id)
     }
   }
@@ -101,6 +104,20 @@ export default {
 
 .context:hover .info {
   opacity: 1;
+}
+
+.tag {
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #ececec;
+  border-radius: 5px;
+  padding: 2px 8px;
+  margin-right: 10px;
+  transition: .2s;
+}
+
+.tag:hover {
+  background-color: #cccccc;
 }
 
 </style>
