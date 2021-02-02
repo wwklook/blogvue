@@ -4,9 +4,7 @@
 
 <script>
 export default {
-  components: {
-
-  },
+  components: {},
 };
 </script>
 
@@ -32,16 +30,12 @@ ul {
   margin: 0;
 }
 
-.content {
-  width: 700px;
-  margin: 20px;
-  flex-grow: 0.5;
-}
-
-.main {
-  width: auto;
-  height: auto;
+.bottom-layer {
+  background-color: #e2e2e2;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  padding: 10px;
 }
 </style>

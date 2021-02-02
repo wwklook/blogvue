@@ -17,11 +17,18 @@ export default {
       articles: [],
     };
   },
+  watch: {
+    $route(to, from) {
+      getArticleCategory(to.params.id).then((res) => {
+        this.articles = res.data.data;
+      });
+    },
+  },
   created() {
     getArticleCategory(this.$route.params.id).then((res) => {
       this.articles = res.data.data;
     });
-  }
+  },
 };
 </script>
 

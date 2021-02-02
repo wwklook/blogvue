@@ -46,4 +46,16 @@ export default {
 </script>
 
 <style scoped>
+.content {
+  width: 700px;
+  margin: 20px;
+  flex-grow: 0.5;
+}
+
+.main {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
 </style>

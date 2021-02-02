@@ -24,9 +24,9 @@ const cdn = {
         // 'https://cdn.bootcss.com/vue/2.6.12/vue.min.js',
         // 'https://cdn.bootcss.com/vuex/3.1.2/vuex.min.js',
         // 'https://cdn.bootcss.com/vue-router/3.1.3/vue-router.min.js',
-        'https://cdn.bootcss.com/marked/0.8.0/marked.min.js',
-        'https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js',
-        'https://cdn.bootcss.com/axios/0.19.2/axios.min.js'
+        'https://cdn.jsdelivr.net/npm/marked/marked.min.js',
+        'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.5.0/build/highlight.min.js',
+        'https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js'
     ]
 }
 

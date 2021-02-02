@@ -1,5 +1,6 @@
 <template>
   <div class="context" @click="toContext">
+    <img class="bg-img" :src="'http://127.0.0.1:8000/' + data.img" />
     <div class="title">{{ data.title }}</div>
     <div class="summary">{{ data.summary }}</div>
     <div class="info">
@@ -7,27 +8,29 @@
       <span> {{ formatTime(data.create_time) }}</span>
       <img src="@/assets/blog/watch.svg" title="阅读数" />
       <span> {{ data.read_number }}次阅读</span>
-      <div class="tag" v-for="(v, k) in data.tags.slice(0, 5)" :key="k">{{ v }}</div>
+      <div class="tag" v-for="(v, k) in data.tags.slice(0, 5)" :key="k">
+        {{ v }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Article",
+  name: "ArticleItem",
   props: ["data"],
   computed: {
-    formatTime(){
-      return function(str="") {
-        return str.replace('T', ' ').slice(0, -4)
-      }
-    }
+    formatTime() {
+      return function (str = "") {
+        return str.replace("T", " ").slice(0, -4);
+      };
+    },
   },
   methods: {
     toContext() {
-      this.$router.push('/home/blog/' + this.data.blog_id)
-    }
-  }
+      this.$router.push("/home/blog/" + this.data.blog_id);
+    },
+  },
 };
 </script>
 
@@ -36,10 +39,10 @@ export default {
   width: 100%;
   height: 400px;
   border-radius: 10px;
-  background-color: white;
   opacity: 0.7;
   transition: 1s;
   position: relative;
+  overflow: hidden;
   margin-bottom: 40px;
 }
 
@@ -49,11 +52,21 @@ export default {
   cursor: pointer;
 }
 
+.bg-img {
+  position: absolute;
+  z-index: -10;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s;
+}
+
 .title {
   width: 100%;
   font-size: 45px;
   text-align: center;
-  color: #66ccff;
+  color: #00aaff;
   transition: 0.5s;
   position: absolute;
   white-space: nowrap;
@@ -62,7 +75,7 @@ export default {
 
 .summary {
   opacity: 0;
-  transition: .5s;
+  transition: 0.5s;
   font-size: 25px;
   position: absolute;
   bottom: 100px;
@@ -79,23 +92,29 @@ export default {
   white-space: nowrap;
   color: #515151;
   opacity: 0;
-  transition: .5s;
+  transition: 0.5s;
+  display: flex;
+  align-items: center;
 }
 
 .info img {
-  margin-right: 10px;
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
+  margin-right: 7px;
+  width: 20px;
+  height: 20px;
 }
+
 .info span {
-  vertical-align: middle;
   margin-right: 30px;
   font-size: 20px;
 }
 .context:hover .title {
   top: 120px;
   font-size: 50px;
+}
+
+.context:hover .bg-img {
+  filter: blur(1px);
+  transform: scale(1.1);
 }
 
 .context:hover .summary {
@@ -113,11 +132,10 @@ export default {
   border-radius: 5px;
   padding: 2px 8px;
   margin-right: 10px;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .tag:hover {
   background-color: #cccccc;
 }
-
 </style>

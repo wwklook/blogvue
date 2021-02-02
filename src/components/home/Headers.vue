@@ -25,36 +25,43 @@
       </ul>
     </div>
     <div class="login">
-      <div class="right" v-if="!islogin">
-        <span @click="tologin">登录</span>
+      <div class="right">
+        <span @click="tologin" v-if="!islogin">登录</span>
       </div>
-      <div class="pro">
+      <div class="acc" v-if="userinfo">
         <img
-          src="https://i0.hdslb.com/bfs/face/member/noface.jpg@150w_150h.jpg"
+          :src="userinfo.avatar"
+          @click="toAccount"
         />
-        <div class="profile"></div>
+        <div class="account">
+          <span class="account-name">{{ userinfo.nickname }}</span>
+          <div class="account-center" @click="toAccount">个人中心</div>
+          <div class="account-logout" @click="logout">注销</div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { getCategory } from "@/network/blog.js";
+import { getCategory, setLogout } from "@/network/blog.js";
 
 export default {
+  name: "Headers",
   components: {},
   data() {
     return {
-      islogin: false,
       categories: [],
     };
   },
-  watch: {
-    "$store.state.isLogin"(newval, oldval) {
-      console.log(newval);
-      this.islogin = newval;
+  computed: {
+    userinfo() {
+      return this.$store.state.userinfo;
+    },
+    islogin() {
+      return this.$store.state.islogin;
     },
   },
-  created() {
+  mounted() {
     getCategory().then((res) => {
       this.categories = res.data.categories;
     });
@@ -68,6 +75,14 @@ export default {
     },
     toHome() {
       this.$router.push("/home/content");
+    },
+    toAccount() {
+      this.$router.push("/account");
+    },
+    logout() {
+      setLogout().then((res) => {
+        location.href = location.href;
+      });
     },
   },
 };
@@ -99,54 +114,6 @@ li {
   align-items: center;
 }
 
-.pro {
-  position: relative;
-  float: right;
-  width: 82px;
-  height: 82px;
-  display: flex;
-  justify-content: center;
-}
-
-.profile {
-  position: absolute;
-  width: 200px;
-  height: 400px;
-  left: 50%;
-  margin-left: -105px;
-  top: 50%;
-  background-color: rgb(105, 105, 105);
-  z-index: 9;
-  display: none;
-  opacity: 0;
-  transition-delay: 0.2s;
-}
-
-.pro:hover img {
-  width: 72px;
-  height: 72px;
-}
-
-.pro:hover .profile {
-  display: block;
-  opacity: 1;
-}
-
-.login {
-  width: 250px;
-}
-
-.pro img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  margin: 10px;
-  float: right;
-  transition: 0.2s;
-  z-index: 10;
-  cursor: pointer;
-}
-
 .home {
   margin-left: 15px;
   padding-right: 10px;
@@ -170,6 +137,7 @@ li {
 }
 
 .right {
+  width: 50px;
   margin: 20px 5px;
   cursor: pointer;
   float: right;
@@ -214,15 +182,16 @@ li {
   position: relative;
 }
 
-.category:hover .sub,
-.category:hover .triangle {
+.category:hover .sub {
+  visibility: visible;
   opacity: 1;
 }
 
 .sub {
+  visibility: hidden;
   background-color: #666666;
   opacity: 0;
-  transition: 0.4s;
+  transition: opacity 0.4s;
   border-radius: 12px;
   position: absolute;
   top: 50px;
@@ -254,5 +223,88 @@ li {
 
 .sub-item:hover {
   color: #66ccff;
+}
+
+.acc {
+  position: relative;
+  float: right;
+  width: 82px;
+  height: 82px;
+  display: flex;
+  justify-content: center;
+}
+
+.account {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  margin-left: -105px;
+  padding-top: 48px;
+  border-radius: 8px;
+  background-color: #f6f6f6;
+  z-index: 9;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.acc:hover img {
+  width: 72px;
+  height: 72px;
+}
+
+.acc:hover .account {
+  visibility: visible;
+  opacity: 1;
+}
+
+.login {
+  width: 250px;
+}
+
+.acc img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin: 10px;
+  float: right;
+  transition: 0.2s;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.account-center {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  border-bottom: 1px solid #8c8c8c;
+}
+
+.account-logout {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  /* border-bottom: 1px solid #8c8c8c; */
+}
+
+.account-name {
+  color: #2b577b;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: fantasy;
+}
+
+.account div:hover {
+  background-color: #e0e0e0;
 }
 </style>
