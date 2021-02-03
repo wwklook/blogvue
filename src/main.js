@@ -41,5 +41,3 @@ isLogin().then(res => {
     console.log("Not logged in, welcome to '/login.html'");
   }
 })
-
-
