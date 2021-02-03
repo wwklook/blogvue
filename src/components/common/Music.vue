@@ -84,7 +84,7 @@ export default {
   created() {
     getIlove().then((res) => {
       if (res.data.musicList.length > 0) {
-        return
+        this.music_list = []
       }
       this.music_list = res.data.musicList
     });
