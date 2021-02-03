@@ -84,11 +84,9 @@ export default {
   created() {
     getIlove().then((res) => {
       if (res.data.musicList.length > 0) {
-        this.music_list = [];
+        return
       }
-      for (let i = 0; i < res.data.musicList.length; i++) {
-        this.music_list.push(res.data.musicList[i].data);
-      }
+      this.music_list = res.data.musicList
     });
   },
   methods: {
