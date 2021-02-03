@@ -1,16 +1,28 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-
+// 一级页面
 const Home = () =>
-  import('../views/Home.vue')
+  import('@/views/Home.vue')
+const Account = () =>
+  import('@/views/Account.vue')
+
+// 二级页面(Blog)
 const Blog = () =>
-  import('../views/home/Blog.vue')
+  import('@/views/home/Blog.vue')
 const Content = () =>
-  import('../views/home/Content.vue')
+  import('@/views/home/Content.vue')
 const Messages = () =>
-  import('../views/home/Messages.vue')
+  import('@/views/home/Messages.vue')
 const Category = () =>
-  import('../views/home/Category.vue')
+  import('@/views/home/Category.vue')
+
+// 二级页面(Profile)
+const AccountIndex = () =>
+  import('@/views/account/Index.vue')
+const AccountInfo = () =>
+  import('@/views/account/Info.vue')
+const AccountFace = () =>
+  import('@/views/account/Face.vue')
 
 
 const routes = [{
@@ -37,9 +49,25 @@ const routes = [{
     path: 'category/:id',
     name: 'Category',
     component: Category
-  }
-  ]
-},
+  }],
+}, {
+  path: '/account',
+  name: 'Account',
+  component: Account,
+  children: [{
+    path: 'index',
+    name: 'AccountIndex',
+    component: AccountIndex
+  }, {
+    path: 'info',
+    name: 'AccountInfo',
+    component: AccountInfo
+  }, {
+    path: 'face',
+    name: 'AccountFace',
+    component: AccountFace
+  }],
+}
 ]
 
 const router = createRouter({

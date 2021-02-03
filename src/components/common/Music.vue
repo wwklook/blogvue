@@ -257,6 +257,7 @@ input {
   height: 90px;
   border-radius: 50%;
   margin: 5px 5px;
+  cursor: pointer;
 }
 
 .song {

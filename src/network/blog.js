@@ -6,6 +6,12 @@ export function isLogin() {
   })
 }
 
+export function setLogout() {
+  return requests({
+    url: '/logout',
+  })
+}
+
 export function getIlove() {
   return requests({
     url: '/get_i_love',
@@ -19,7 +25,7 @@ export function getSongInfoAndLrc(rid) {
   })
 }
 
-export function getBlog(pn=1, rn=5) {
+export function getBlog(pn = 1, rn = 5) {
   return requests({
     url: '/get_blog',
     params: { pn, rn }
@@ -40,6 +46,11 @@ export function getComment(aid) {
   })
 }
 
+export function getUserInfo() {
+  return requests({
+    url: '/get_userinfo'
+  })
+}
 
 export function clickLike(aid) {
   return requests({
@@ -48,7 +59,7 @@ export function clickLike(aid) {
   })
 }
 
-export function getMessage(pn=1, rn=5) {
+export function getMessage(pn = 1, rn = 5) {
   return requests({
     url: '/get_message',
     params: { pn, rn }
@@ -84,6 +95,26 @@ export function addMessage(message) {
     url: '/add_message',
     method: 'post',
     data: { message }
+  })
+}
+
+
+export function changeUserInfo(userinfo) {
+  return requests({
+    url: '/change_userinfo',
+    method: 'post',
+    data: userinfo
+  })
+}
+
+export function changeAvatar(data) {
+  return requests({
+    url: '/change_avatar',
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    },
+    method: 'post',
+    data: data
   })
 }
 

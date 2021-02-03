@@ -28,7 +28,7 @@ export default {
     getArticleCategory(this.$route.params.id).then((res) => {
       this.articles = res.data.data;
     });
-  }
+  },
 };
 </script>
 
