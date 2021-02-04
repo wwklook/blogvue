@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="right">
-      <span @click="tologin" v-if="!islogin">登录</span>
+      <span v-if="!userinfo" @click="tologin">登录</span>
     </div>
     <div class="acc" v-if="userinfo">
       <img :src="userinfo.avatar" />

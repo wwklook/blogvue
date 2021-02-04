@@ -16,7 +16,6 @@ app.directive("highlight", function (el) {
   let blocks = el.querySelectorAll("pre code");
   blocks.forEach(block => {
     hljs.highlightBlock(block);
-    console.log(block.parentNode.clientHeight);
     const linesLength = (block.parentNode.clientHeight - 14) / 15
 
     let linesNum = '<span aria-hidden="true" class="line-numbers-rows">';

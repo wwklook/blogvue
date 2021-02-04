@@ -45,7 +45,6 @@ export default {
   mounted() {
     isLogin().then((res) => {
       if (res.data == "no") {
-        console.log(1);
         location.href = "/login.html"
       }
     });
