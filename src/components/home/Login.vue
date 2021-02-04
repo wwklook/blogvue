@@ -56,7 +56,7 @@ export default {
 
 .right {
   width: 50px;
-  margin: 20px 5px;
+  margin: 10px 5px;
   cursor: pointer;
   float: right;
   position: relative;
@@ -89,7 +89,6 @@ export default {
   position: relative;
   float: right;
   width: 82px;
-  height: 82px;
   display: flex;
   justify-content: center;
 }
@@ -115,8 +114,7 @@ export default {
 }
 
 .acc:hover img {
-  width: 72px;
-  height: 72px;
+  transform: scale(1.3);
 }
 
 .acc:hover .account {
@@ -128,7 +126,6 @@ export default {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  margin: 10px;
   float: right;
   transition: 0.2s;
   z-index: 10;
