@@ -2,13 +2,13 @@
   <div class="box">
     <headers />
     <div class="main">
-      <left v-show="isShowAll" />
+      <left v-show="!isSmallScreen" />
       <div class="content">
         <div class="box">
           <router-view />
         </div>
       </div>
-      <right v-show="isShowRight && isShowAll" />
+      <right v-show="isShowRight && !isSmallScreen" />
     </div>
   </div>
 </template>
@@ -20,27 +20,18 @@ import Headers from "@/components/home/Headers.vue";
 
 export default {
   name: "Home",
-  data() {
-    return {
-      isShowAll: document.body.clientWidth > 950 ? true : false,
-    };
-  },
   computed: {
     isShowRight() {
       return this.$route.name == "Content";
     },
+    isSmallScreen(){
+      return this.$store.state.isSmallScreen
+    }
   },
   components: {
     Left,
     Right,
     Headers,
-  },
-  mounted() {
-    window.onresize = () => {
-      return (() => {
-        this.isShowAll = document.body.clientWidth > 950 ? true : false;
-      })();
-    };
   },
 };
 </script>

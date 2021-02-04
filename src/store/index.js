@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state: {
     isLogin: false,
-    userinfo: null
+    userinfo: null,
+    isSmallScreen: document.body.clientWidth < 950 ? true : false
   },
   mutations: {
     changeLoginState(state, isLogin) {
@@ -12,6 +13,9 @@ export default createStore({
     changeUserInfo(state, userinfo) {
       state.userinfo = userinfo
     },
+    changeScreenState(state, isSmall) {
+      state.isSmallScreen = isSmall
+    }
   },
   actions: {
   },

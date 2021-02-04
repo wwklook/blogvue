@@ -29,6 +29,15 @@ app.directive("highlight", function (el) {
 });
 
 
+window.onresize = () => {
+  return (() => {
+    let isSmallScreen = document.body.clientWidth < 950 ? true : false;
+    store.commit("changeScreenState", isSmallScreen);
+  })();
+};
+
+
+
 // 查看登录状态 并获取数据
 isLogin().then(res => {
   if (res.data == "yes") {

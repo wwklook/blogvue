@@ -1,9 +1,9 @@
 <template>
   <div class="context" @click="toContext">
-    <img class="bg-img" :src="data.img" />
+    <img class="bg-img" :src="'https://www.wwklook.com/'+data.img" />
     <div class="title">{{ data.title }}</div>
-    <div class="summary">{{ data.summary }}</div>
-    <div class="info">
+    <div class="summary" :class="{'no-hidden':isSmallScreen}">{{ data.summary }}</div>
+    <div class="info" :class="{'no-hidden':isSmallScreen}">
       <img src="@/assets/blog/time.svg" title="创建时间" />
       <span> {{ formatTime(data.create_time) }}</span>
       <img src="@/assets/blog/watch.svg" title="阅读数" />
@@ -25,6 +25,9 @@ export default {
         return str.replace("T", " ").slice(0, -4);
       };
     },
+    isSmallScreen(){
+      return this.$store.state.isSmallScreen
+    }
   },
   methods: {
     toContext() {
@@ -35,6 +38,11 @@ export default {
 </script>
 
 <style scoped>
+.no-hidden {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 .context {
   width: 100%;
   height: 400px;

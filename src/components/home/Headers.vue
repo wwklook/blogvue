@@ -1,6 +1,6 @@
 <template>
-  <div class="header">
-    <div class="index">
+  <div class="blog-header">
+    <div class="blog-header-left" v-if="!isSmallScreen">
       <div class="home">
         <img src="@/assets/home/home.png" title="主页" @click="toHome" />
       </div>
@@ -24,41 +24,62 @@
         </li>
       </ul>
     </div>
-    <div class="login">
-      <div class="right">
-        <span @click="tologin" v-if="!islogin">登录</span>
-      </div>
-      <div class="acc" v-if="userinfo">
-        <img
-          :src="userinfo.avatar"
-          @click="toAccount"
-        />
-        <div class="account">
-          <span class="account-name">{{ userinfo.nickname }}</span>
-          <div class="account-center" @click="toAccount">个人中心</div>
-          <div class="account-logout" @click="logout">注销</div>
+    <div class="blog-smaller" v-if="isSmallScreen">
+      <img
+        class="left-menu-img"
+        src="@/assets/home/choose.svg"
+        title="菜单"
+        @click="showMenu"
+      />
+      <div class="blog-smaller-menu" v-show="isShowMenu">
+        <div class="left-menu">
+          <ul class="">
+            <li class="menu-li" @click="toHome">
+              <div class="menu-title">
+                <img src="@/assets/home/home.png" title="主页" />主页
+              </div>
+            </li>
+            <li
+              class="menu-li"
+              v-for="category in categories"
+              :key="category.category_id"
+            >
+              <div class="menu-title">{{ category.category_name }}</div>
+              <ul class="menu-sub">
+                <li
+                  class="menu-sub-item"
+                  v-for="sub in category.sub_category"
+                  :key="sub.id"
+                  @click="toCategory(sub.id)"
+                >
+                  {{ sub.name }}
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
+        <div class="right-cover" @click="hideMenu"></div>
       </div>
     </div>
+    <login />
   </div>
 </template>
 <script>
-import { getCategory, setLogout } from "@/network/blog.js";
+import { getCategory } from "@/network/blog.js";
+import Login from "@/components/home/Login.vue";
 
 export default {
   name: "Headers",
-  components: {},
+  components: { Login },
   data() {
     return {
       categories: [],
+      isShowMenu: false,
     };
   },
   computed: {
-    userinfo() {
-      return this.$store.state.userinfo;
-    },
-    islogin() {
-      return this.$store.state.islogin;
+    isSmallScreen() {
+      return this.$store.state.isSmallScreen;
     },
   },
   mounted() {
@@ -67,22 +88,19 @@ export default {
     });
   },
   methods: {
-    tologin() {
-      window.location.href = "/login.html";
-    },
     toCategory(id) {
       this.$router.push("/home/category/" + id);
+      this.hideMenu();
     },
     toHome() {
       this.$router.push("/home/content");
+      this.hideMenu();
     },
-    toAccount() {
-      this.$router.push("/account");
+    showMenu() {
+      this.isShowMenu = true;
     },
-    logout() {
-      setLogout().then((res) => {
-        location.href = location.href;
-      });
+    hideMenu() {
+      this.isShowMenu = false;
     },
   },
 };
@@ -93,25 +111,92 @@ li {
   list-style: none;
 }
 
-.header {
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.blog-smaller-menu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 99;
+  display: flex;
+}
+
+.left-menu {
+  width: 50%;
+  height: auto;
+  background-color: #eaeaea;
+  border: 1.5px solid #66ccff;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.right-cover {
+  flex: 1;
+  background-color: #000000;
+  opacity: 0.2;
+}
+
+.blog-header {
   width: 100%;
-  height: 88px;
+  height: 60px;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  opacity: 0.7;
   position: relative;
   z-index: 99;
 }
 
-.index {
+.menu-li {
+  position: relative;
+  background-color: #fff;
+}
+
+.menu-title {
+  background-color: #00aaff;
+  padding: 10px;
+  border-bottom: 1px solid #d8d8d8;
+  display: flex;
+  align-items: center;
+}
+
+.menu-title img {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+.menu-sub {
   width: 100%;
-  height: 88px;
+  padding-left: 10px;
+  background-color: #68b4da;
+  visibility: hidden;
+  position: absolute;
+}
+
+.menu-li:hover .menu-sub {
+  position: relative;
+  visibility: visible;
+}
+
+.menu-sub-item {
+  padding: 5px;
+  border-bottom: 1px solid #dadada;
+}
+
+.blog-header-left {
+  width: 100%;
+  height: 60px;
   border-radius: 8px;
   display: flex;
   align-items: center;
+  opacity: 0.7;
 }
 
 .home {
@@ -121,8 +206,8 @@ li {
 }
 
 .home img {
-  width: 60px;
-  height: 60px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
 }
 
@@ -134,38 +219,6 @@ li {
   display: flex;
   justify-content: center;
   cursor: pointer;
-}
-
-.right {
-  width: 50px;
-  margin: 20px 5px;
-  cursor: pointer;
-  float: right;
-  position: relative;
-  color: #66ccff;
-  font-size: 25px;
-  display: flex;
-  justify-content: center;
-}
-
-.label:hover,
-.right:hover {
-  color: #66ccff;
-}
-
-.label::after,
-.right::after {
-  content: "";
-  width: 0px;
-  border-bottom: 2.5px solid #66ccff;
-  transition: width 0.2s cubic-bezier(0, 0.83, 0.72, 1.03);
-  position: absolute;
-  bottom: 0;
-}
-
-.label:hover::after,
-.right:hover::after {
-  width: 100%;
 }
 
 .categories {
@@ -223,88 +276,5 @@ li {
 
 .sub-item:hover {
   color: #66ccff;
-}
-
-.acc {
-  position: relative;
-  float: right;
-  width: 82px;
-  height: 82px;
-  display: flex;
-  justify-content: center;
-}
-
-.account {
-  position: absolute;
-  width: 200px;
-  height: auto;
-  left: 50%;
-  top: 50%;
-  margin-left: -105px;
-  padding-top: 48px;
-  border-radius: 8px;
-  background-color: #f6f6f6;
-  z-index: 9;
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.2s;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.acc:hover img {
-  width: 72px;
-  height: 72px;
-}
-
-.acc:hover .account {
-  visibility: visible;
-  opacity: 1;
-}
-
-.login {
-  width: 250px;
-}
-
-.acc img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  margin: 10px;
-  float: right;
-  transition: 0.2s;
-  z-index: 10;
-  cursor: pointer;
-}
-
-.account-center {
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  cursor: pointer;
-  border-bottom: 1px solid #8c8c8c;
-}
-
-.account-logout {
-  width: 100%;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  cursor: pointer;
-  /* border-bottom: 1px solid #8c8c8c; */
-}
-
-.account-name {
-  color: #2b577b;
-  font-weight: bold;
-  font-size: 20px;
-  font-family: fantasy;
-}
-
-.account div:hover {
-  background-color: #e0e0e0;
 }
 </style>
