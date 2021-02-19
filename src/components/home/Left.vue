@@ -58,7 +58,8 @@ export default {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  transform: .5s;
+  transition: .5s;
+  cursor: pointer;
 }
 
 .head img:hover {
