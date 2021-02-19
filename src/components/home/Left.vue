@@ -3,7 +3,6 @@
     <div class="mine">
       <div class="head">
         <img
-          class="rotate"
           src="https://i0.hdslb.com/bfs/face/member/noface.jpg@150w_150h.jpg"
         />
         <div>无聊look</div>
@@ -26,19 +25,6 @@ export default {
 </script>
 
 <style scoped>
-.rotate:hover {
-  animation: rotateplane 0.5s ease-in-out;
-}
-
-@keyframes rotateplane {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
-}
-
 .left {
   width: 350px;
   margin: 20px;
@@ -73,4 +59,9 @@ export default {
   height: 100px;
   border-radius: 50%;
 }
+
+.head img:hover {
+  transform: rotate(1turn);
+}
+
 </style>
