@@ -2,10 +2,7 @@
   <div class="article-comment">
     <div class="comment-item" v-for="item in comments" :key="item.comment_id">
       <div class="user-info">
-        <img
-          src="https://i0.hdslb.com/bfs/face/member/noface.jpg@150w_150h.jpg"
-        />
-        <!-- <img :src="item.upic" /> -->
+        <img :src="item.upic" />
         <div class="uname">{{ item.uname }}</div>
         <div class="comment-create-time">
           {{ formatTime(item.create_time) }}
