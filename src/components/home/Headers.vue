@@ -1,12 +1,15 @@
 <template>
-  <div class="blog-header">
+  <div
+    class="blog-header"
+    :class="{ 'no-header': !isTop, 'hide-header': isUp }"
+  >
     <div class="blog-header-left" v-if="!isSmallScreen">
-      <div class="home">
+      <div class="to-home">
         <img src="@/assets/home/home.png" title="主页" @click="toHome" />
       </div>
       <ul class="categories">
         <li
-          class="category"
+          class="menu-item"
           v-for="category in categories"
           :key="category.category_id"
         >
@@ -23,6 +26,14 @@
           </ul>
         </li>
       </ul>
+      <div class="menu-item">
+        其他
+        <ul class="sub">
+          <li class="sub-item" @click="toMessage">
+            留言
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="blog-smaller" v-if="isSmallScreen">
       <img
@@ -75,6 +86,9 @@ export default {
     return {
       categories: [],
       isShowMenu: false,
+      oldscroll: 0,
+      isUp: false,
+      isTop: true,
     };
   },
   computed: {
@@ -86,6 +100,7 @@ export default {
     getCategory().then((res) => {
       this.categories = res.data.categories;
     });
+    window.addEventListener("scroll", this.handleScroll);
   },
   methods: {
     toCategory(id) {
@@ -96,11 +111,23 @@ export default {
       this.$router.push("/home/content");
       this.hideMenu();
     },
+    toMessage() {
+      this.$router.push("/home/messages");
+    },
     showMenu() {
       this.isShowMenu = true;
     },
     hideMenu() {
       this.isShowMenu = false;
+    },
+    handleScroll() {
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop;
+      this.isTop = scrollTop === 0;
+      this.isUp = scrollTop > this.oldscroll;
+      this.oldscroll = scrollTop;
     },
   },
 };
@@ -142,15 +169,25 @@ ul {
 }
 
 .blog-header {
-  width: 100%;
   height: 60px;
-  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
-  position: relative;
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 99;
+  transition: 0.5s;
+}
+
+.no-header {
+  background-color: #5fa7cc;
+}
+
+.hide-header {
+  transform: translateY(-100%);
 }
 
 .menu-li {
@@ -199,13 +236,13 @@ ul {
   opacity: 0.7;
 }
 
-.home {
+.to-home {
   margin-left: 15px;
   padding-right: 10px;
-  border-right: 2px solid #66ccff;
+  border-right: 2px solid #fff;
 }
 
-.home img {
+.to-home img {
   width: 32px;
   height: 32px;
   cursor: pointer;
@@ -226,16 +263,15 @@ ul {
   margin-left: 20px;
 }
 
-.category {
-  color: #000;
+.menu-item {
   font-size: 22px;
   transition: 0.5s;
-  margin: 20px 10px;
+  padding: 20px 10px;
   cursor: pointer;
   position: relative;
 }
 
-.category:hover .sub {
+.menu-item:hover .sub {
   visibility: visible;
   opacity: 1;
 }
@@ -247,7 +283,7 @@ ul {
   transition: opacity 0.4s;
   border-radius: 12px;
   position: absolute;
-  top: 50px;
+  top: 65px;
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0px -1px 5px 2px #000;
@@ -271,7 +307,6 @@ ul {
   white-space: nowrap;
   padding: 5px 20px;
   font-size: 20px;
-  color: #fff;
 }
 
 .sub-item:hover {

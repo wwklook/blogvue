@@ -60,7 +60,6 @@ export default {
   cursor: pointer;
   float: right;
   position: relative;
-  color: #66ccff;
   font-size: 25px;
   display: flex;
   justify-content: center;
@@ -68,7 +67,7 @@ export default {
 
 .label:hover,
 .right:hover {
-  color: #66ccff;
+  color: #dddddd;
 }
 
 .label::after,
