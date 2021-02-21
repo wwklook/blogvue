@@ -15,6 +15,13 @@ export function getMyComic(pn, rn = 16) {
   })
 }
 
+export function getFriend() {
+  return requests({
+    url: '/get_friends',
+  })
+}
+
+
 export function isLogin() {
   return requests({
     url: '/is_login',

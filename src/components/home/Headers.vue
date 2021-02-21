@@ -38,7 +38,7 @@
     <div class="blog-smaller" v-if="isSmallScreen">
       <img
         class="left-menu-img"
-        src="@/assets/home/choose.svg"
+        src="@/assets/home/menu.png"
         title="菜单"
         @click="showMenu"
       />
@@ -73,8 +73,8 @@ export default {
       return this.$store.state.isSmallScreen;
     },
     isContent() {
-      return this.$route.name === "Content"
-    }
+      return this.$route.name === "Content";
+    },
   },
   mounted() {
     getCategory().then((res) => {
@@ -151,6 +151,10 @@ export default {
   display: flex;
   align-items: center;
   opacity: 0.7;
+}
+
+.left-menu-img {
+  margin-left: 10px;
 }
 
 .to-home {

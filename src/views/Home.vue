@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div>
     <headers />
     <div class="home" v-show="isContent">
       <h1 class="site-name">无聊look的个人博客</h1>
