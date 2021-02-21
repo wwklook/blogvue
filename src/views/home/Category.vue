@@ -19,6 +19,7 @@ export default {
   },
   watch: {
     $route(to, from) {
+      if (to.name !== "Category") return
       getArticleCategory(to.params.id).then((res) => {
         this.articles = res.data.data;
       });

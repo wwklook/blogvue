@@ -1,5 +1,13 @@
 import { requests } from './index'
 
+
+export function getSiteInfo() {
+  return requests({
+    url: '/get_site_info',
+  })
+}
+
+
 export function isLogin() {
   return requests({
     url: '/is_login',

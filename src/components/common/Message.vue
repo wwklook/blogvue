@@ -45,7 +45,6 @@ h4 {
 }
 
 .message {
-  width: 100%;
   height: auto;
   background-color: white;
   opacity: 0.7;

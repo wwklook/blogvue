@@ -38,41 +38,35 @@ export default {
   },
 };
 </script>
+<style lang="sass" scoped >
+.content
+  max-width: 100%
+  width: 700px
+  margin: 20px
+  flex-grow: 0.5
 
-<style scoped>
-.content {
-  width: 700px;
-  margin: 20px;
-  flex-grow: 0.5;
-}
+.home
+  width: 100%
+  height: 50vh
+  background-color: #66ccff
+  display: flex
+  justify-content: center
+  align-items: center
 
-.home {
-  width: 100%;
-  height: 50vh;
-  background-color: #66ccff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.site-name {
-  color: #fff;
-  letter-spacing: 0.5rem;
-  font-size: 4.5rem;
-}
+.site-name
+  color: #fff
+  letter-spacing: 0.3rem
+  font-size: $font-size-lg
 
-@media screen and (max-width: 450px) {
-  .site-name {
-    font-size: 1.8rem;
-    letter-spacing: 0.2rem;
-  }
-}
+@media screen and (max-width: 450px)
+  .site-name
+    font-size: $font-size-md
 
-.main {
-  width: auto;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  margin-top: 60px;
-}
+.main
+  width: auto
+  height: auto
+  display: flex
+  justify-content: center
+  margin-top: 60px
 </style>

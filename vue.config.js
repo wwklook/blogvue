@@ -4,7 +4,6 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
-
 const devNeedCdn = false
 const isProduction = process.env.NODE_ENV !== 'development';
 const CompressionWebpackPlugin = require('compression-webpack-plugin')
@@ -40,6 +39,16 @@ module.exports = {
       if (isProduction || devNeedCdn) args[0].cdn = cdn
       return args
     })
+    const oneOfsMap = config.module.rule('sass').oneOfs.store
+    oneOfsMap.forEach(item => {
+      item
+        .use('sass-resources-loader')
+        .loader('sass-resources-loader')
+        .options({
+          resources: ['./src/assets/common.sass', './src/assets/makedown.sass']
+        })
+        .end()
+    })
   },
   configureWebpack: config => {
     // 用cdn方式引入，则构建时要忽略相关资源
@@ -60,6 +69,5 @@ module.exports = {
         })
       )
     }
-  },
-
+  }
 }

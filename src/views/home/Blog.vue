@@ -48,7 +48,7 @@
       <button class="comment-btn" @click="postComment">发表评论</button>
     </div>
 
-    <comment :comments="comments"/>
+    <comment :comments="comments" />
   </div>
 </template>
 
@@ -70,7 +70,7 @@ import Comment from "@/components/common/Comment.vue";
 
 export default {
   components: {
-    Comment
+    Comment,
   },
   data() {
     return {
@@ -144,143 +144,122 @@ export default {
 };
 </script>
 
-<style scoped>
-.article {
-  padding: 20px 30px;
-  background-color: white;
-  border-radius: 10px;
-}
+<style lang="sass" scoped>
+@import "~@/assets/makedown.sass"
+.article
+  padding: 20px 30px
+  background-color: white
+  border-radius: 10px
 
-.article-title {
-  text-align: center;
-  padding-bottom: 20px;
-}
+  &-title
+    text-align: center
+    padding-bottom: 20px
 
-.article-header {
-  padding-bottom: 30px;
-}
+  &-header
+    padding-bottom: 30px
 
-.article-info img {
-  margin-right: 3px;
-  width: 16px;
-  height: 16px;
-  vertical-align: middle;
-}
+  &-info img
+    margin-right: 3px
+    width: 16px
+    height: 16px
+    vertical-align: middle
 
-.article-info span {
-  vertical-align: middle;
-  margin-right: 30px;
-  font-size: 16px;
-  color: #9a9a9a;
-}
+  &-info span
+    vertical-align: middle
+    margin-right: 30px
+    font-size: 16px
+    color: #9a9a9a
 
-.article-btn {
-  padding: 20px;
-  display: flex;
-  justify-content: space-evenly;
-}
+  &-btn
+    padding: 20px
+    display: flex
+    justify-content: space-evenly
 
-.article-footer {
-  padding: 20px 0;
-}
+  &-footer
+    padding: 20px 0
 
-.article-tag {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  &-tag
+    display: flex
+    justify-content: space-between
+    align-items: center
 
-.btn {
-  width: 43px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  border: 1px solid #66ccff;
-  border-radius: 7px;
-  color: #66ccff;
-  cursor: pointer;
-  padding: 10px 20px;
-  transition: 0.2s;
-}
+.btn
+  width: 43px
+  height: 30px
+  line-height: 30px
+  text-align: center
+  border: 1px solid #66ccff
+  border-radius: 7px
+  color: #66ccff
+  cursor: pointer
+  padding: 10px 20px
+  transition: 0.2s
 
-.btn:hover {
-  background-color: #66ccff;
-  color: #fff;
-}
+  &:hover
+    background-color: #66ccff
+    color: #fff
 
-.active {
-  background-color: #66ccff;
-  color: #fff;
-}
+.active
+  background-color: #66ccff
+  color: #fff
 
-.tag {
-  display: inline-block;
-  vertical-align: middle;
-  background-color: #ececec;
-  border-radius: 5px;
-  padding: 2px 8px;
-  margin-right: 10px;
-  transition: 0.2s;
-  cursor: pointer;
-}
+.tag
+  display: inline-block
+  vertical-align: middle
+  background-color: #ececec
+  border-radius: 5px
+  padding: 2px 8px
+  margin-right: 10px
+  transition: 0.2s
+  cursor: pointer
 
-.tag:hover {
-  background-color: #cccccc;
-}
+  &:hover
+    background-color: #cccccc
 
-.modified-time {
-  color: #9a9a9a;
-}
+.modified-time
+  color: #9a9a9a
 
-.comment {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+.comment
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
 
-.comment textarea {
-  width: 100%;
-  height: 200px;
-  border: 1px solid #cccccc;
-  border-radius: 10px;
-}
-.comment-btn {
-  width: 80px;
-  height: 30px;
-  margin: 20px;
-  background-color: #fff;
-  cursor: pointer;
-}
+  & textarea
+    width: 100%
+    height: 200px
+    border: 1px solid #cccccc
+    border-radius: 10px
 
-.article-comment {
-  width: 100%;
-  height: auto;
-}
+  &-btn
+    width: 80px
+    height: 30px
+    margin: 20px
+    background-color: #fff
+    cursor: pointer
 
-.user-info {
-  display: flex;
-  align-items: center;
-  padding-top: 20px;
-  border-top: 1px solid #9a9a9a;
-}
+.article-comment
+  width: 100%
+  height: auto
 
-.user-info img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
+.user-info
+  display: flex
+  align-items: center
+  padding-top: 20px
+  border-top: 1px solid #9a9a9a
 
-.uname {
-  margin: 10px;
-}
+  & img
+    width: 40px
+    height: 40px
+    border-radius: 50%
 
-.comment-create-time {
-  font-size: 14px;
-  color: #9a9a9a;
-}
+.uname
+  margin: 10px
 
-.comment-text {
-  margin: 20px;
-}
+.comment-create-time
+  font-size: 14px
+  color: #9a9a9a
+
+.comment-text
+  margin: 20px
 </style>

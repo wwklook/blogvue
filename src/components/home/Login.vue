@@ -74,8 +74,8 @@ export default {
 .right::after {
   content: "";
   width: 0px;
-  border-bottom: 2.5px solid #66ccff;
-  transition: width 0.2s cubic-bezier(0, 0.83, 0.72, 1.03);
+  border-bottom: 2.5px solid #dddddd;
+  transition: width 0.5s;
   position: absolute;
   bottom: 0;
 }

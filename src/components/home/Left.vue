@@ -10,15 +10,15 @@
       <div class="my-info">
         <div class="info-item">
           <div class="info-name">文章</div>
-          <div class="num">5</div>
+          <div class="num">{{site_info.article_num}}</div>
         </div>
         <div class="info-item">
           <div class="info-name">标签</div>
-          <div class="num">7</div>
+          <div class="num">{{site_info.tag_num}}</div>
         </div>
         <div class="info-item">
           <div class="info-name">阅读数</div>
-          <div class="num">0</div>
+          <div class="num">{{site_info.read_number}}</div>
         </div>
       </div>
     </div>
@@ -30,10 +30,21 @@
 <script>
 import Music from "@/components/common/Music.vue";
 import Calendar from "@/components/common/Calendar.vue";
+import { getSiteInfo } from "@/network/blog.js";
 export default {
   components: {
     Music,
     Calendar,
+  },
+  data() {
+    return {
+      site_info: {}
+    }
+  },
+  created() {
+    getSiteInfo().then((res) => {
+      this.site_info = res.data
+    });
   },
 };
 </script>

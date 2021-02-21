@@ -42,35 +42,7 @@
         title="菜单"
         @click="showMenu"
       />
-      <div class="blog-smaller-menu" v-show="isShowMenu">
-        <div class="left-menu">
-          <ul class="">
-            <li class="menu-li" @click="toHome">
-              <div class="menu-title">
-                <img src="@/assets/home/home.png" title="主页" />主页
-              </div>
-            </li>
-            <li
-              class="menu-li"
-              v-for="category in categories"
-              :key="category.category_id"
-            >
-              <div class="menu-title">{{ category.category_name }}</div>
-              <ul class="menu-sub">
-                <li
-                  class="menu-sub-item"
-                  v-for="sub in category.sub_category"
-                  :key="sub.id"
-                  @click="toCategory(sub.id)"
-                >
-                  {{ sub.name }}
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="right-cover" @click="hideMenu"></div>
-      </div>
+      <side-menu :isShow="isShowMenu" :categories="categories" @hideMenu="hideMenu" />
     </div>
     <login />
   </div>
@@ -78,17 +50,18 @@
 <script>
 import { getCategory } from "@/network/blog.js";
 import Login from "@/components/home/Login.vue";
+import SideMenu from "@/components/home/SideMenu.vue";
 
 export default {
   name: "Headers",
-  components: { Login },
+  components: { Login, SideMenu },
   data() {
     return {
       categories: [],
       isShowMenu: false,
       oldscroll: 0,
       isUp: false,
-      isTop: true,
+      isTop: true
     };
   },
   computed: {
@@ -116,9 +89,11 @@ export default {
     },
     showMenu() {
       this.isShowMenu = true;
+      document.body.style.overflow = "hidden"
     },
     hideMenu() {
       this.isShowMenu = false;
+      document.body.style.overflow = "auto"
     },
     handleScroll() {
       let scrollTop =
@@ -134,38 +109,12 @@ export default {
 </script>
 
 <style scoped>
-li {
-  list-style: none;
+.no-header {
+  background-color: #5fa7cc;
 }
 
-ul {
-  padding: 0;
-  margin: 0;
-}
-
-.blog-smaller-menu {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 99;
-  display: flex;
-}
-
-.left-menu {
-  width: 50%;
-  height: auto;
-  background-color: #eaeaea;
-  border: 1.5px solid #66ccff;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.right-cover {
-  flex: 1;
-  background-color: #000000;
-  opacity: 0.2;
+.hide-header {
+  transform: translateY(-100%);
 }
 
 .blog-header {
@@ -180,51 +129,6 @@ ul {
   right: 0;
   z-index: 99;
   transition: 0.5s;
-}
-
-.no-header {
-  background-color: #5fa7cc;
-}
-
-.hide-header {
-  transform: translateY(-100%);
-}
-
-.menu-li {
-  position: relative;
-  background-color: #fff;
-}
-
-.menu-title {
-  background-color: #00aaff;
-  padding: 10px;
-  border-bottom: 1px solid #d8d8d8;
-  display: flex;
-  align-items: center;
-}
-
-.menu-title img {
-  width: 16px;
-  height: 16px;
-  margin-right: 6px;
-}
-
-.menu-sub {
-  width: 100%;
-  padding-left: 10px;
-  background-color: #68b4da;
-  visibility: hidden;
-  position: absolute;
-}
-
-.menu-li:hover .menu-sub {
-  position: relative;
-  visibility: visible;
-}
-
-.menu-sub-item {
-  padding: 5px;
-  border-bottom: 1px solid #dadada;
 }
 
 .blog-header-left {

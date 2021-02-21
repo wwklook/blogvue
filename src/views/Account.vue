@@ -45,7 +45,7 @@ export default {
   mounted() {
     isLogin().then((res) => {
       if (res.data == "no") {
-        location.href = "/login.html"
+        location.href = "/login.html";
       }
     });
   },
@@ -78,70 +78,69 @@ export default {
 };
 </script>
 
-<style scoped>
-.account {
-  width: 980px;
-  height: 100%;
-  margin: 10px auto 100px;
-  border: 1px solid #e1e2e5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14);
-  background: #fafafa;
-  border-radius: 4px;
-  display: flex;
-}
+<style lang="sass" scoped>
+.account
+  width: 980px
+  height: 100%
+  margin: 10px auto 100px
+  border: 1px solid #e1e2e5
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14)
+  background: #fafafa
+  border-radius: 4px
+  display: flex
 
-.account-left {
-  width: 150px;
-  overflow: hidden;
-}
 
-.account-right {
-  width: 829px;
-  min-height: 890px;
-  border-left: 1px solid #ddd;
-  background: #fff;
-}
+  &-left
+    width: 150px
+    overflow: hidden
 
-.account-top {
-  height: 49px;
-  color: #00aaff;
-  line-height: 49px;
-  padding-left: 20px;
-  border-bottom: 1px solid #e1e2e5;
-}
 
-.account-title {
-  width: 150px;
-  height: 49px;
-  text-align: center;
-  line-height: 49px;
-  font-size: 16px;
-  color: #99a2aa;
-  border-bottom: 1px solid #e1e2e5;
-}
+  &-right
+    width: 829px
+    min-height: 890px
+    border-left: 1px solid #ddd
+    background: #fff
 
-.account-ul {
-  padding: 0;
-  margin: 0;
-  border-bottom: 1px solid #e1e2e5;
-}
 
-.account-list {
-  width: 100%;
-  height: 49px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  cursor: pointer;
-}
+  &-top
+    height: 49px
+    color: #00aaff
+    line-height: 49px
+    padding-left: 20px
+    border-bottom: 1px solid #e1e2e5
 
-.account-list:hover {
-  background-color: #e2e2e2;
-}
 
-.account-active {
-  background-color: #00aaff !important;
-  color: #ffffff;
-}
+  &-title
+    width: 150px
+    height: 49px
+    text-align: center
+    line-height: 49px
+    font-size: 16px
+    color: #99a2aa
+    border-bottom: 1px solid #e1e2e5
+
+
+  &-ul
+    padding: 0
+    margin: 0
+    border-bottom: 1px solid #e1e2e5
+
+
+  &-list
+    width: 100%
+    height: 49px
+    display: flex
+    justify-content: center
+    align-items: center
+    list-style: none
+    cursor: pointer
+
+
+  &-list:hover
+    background-color: #e2e2e2
+
+
+  &-active
+    background-color: #00aaff !important
+    color: #ffffff
 </style>
