@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { getUserInfo, changeAvatar } from "@/network/blog";
+import { getUserInfo, changeAvatar } from "@/network/info";
 export default {
   components: {},
   data() {

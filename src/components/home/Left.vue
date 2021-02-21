@@ -30,7 +30,7 @@
 <script>
 import Music from "@/components/common/Music.vue";
 import Calendar from "@/components/common/Calendar.vue";
-import { getSiteInfo } from "@/network/blog.js";
+import { getSiteInfo } from "@/network/info.js";
 export default {
   components: {
     Music,

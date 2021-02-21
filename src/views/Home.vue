@@ -52,7 +52,8 @@ export default {
   display: flex
   justify-content: center
   align-items: center
-
+  border-bottom-left-radius: 20px
+  border-bottom-right-radius: 20px
 
 .site-name
   color: #fff

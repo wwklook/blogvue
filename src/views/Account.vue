@@ -26,7 +26,7 @@
 
 <script>
 import Headers from "@/components/home/Headers.vue";
-import { isLogin } from "@/network/blog";
+import { isLogin } from "@/network/info";
 
 export default {
   name: "Account",

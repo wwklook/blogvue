@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 
 import hljs from "highlight.js";
-import { isLogin, getUserInfo } from "@/network/blog";
+import { isLogin, getUserInfo } from "@/network/info.js";
 
 const app = createApp(App);
 

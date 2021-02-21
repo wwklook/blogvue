@@ -65,7 +65,7 @@
 
 
 <script>
-import { getIlove, getSongInfoAndLrc } from "@/network/blog.js";
+import { getIlove, getSongInfoAndLrc } from "@/network/info.js";
 
 export default {
   name: "Music",

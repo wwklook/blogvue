@@ -1,7 +1,7 @@
 <template>
   <div
     class="blog-header"
-    :class="{ 'no-header': !isTop, 'hide-header': isUp }"
+    :class="{ 'header-color': !isTop || !isContent, 'hide-header': isUp }"
   >
     <div class="blog-header-left" v-if="!isSmallScreen">
       <div class="to-home">
@@ -26,12 +26,12 @@
           </ul>
         </li>
       </ul>
+      <div class="menu-item" @click="toFriends">友链</div>
       <div class="menu-item">
         其他
         <ul class="sub">
-          <li class="sub-item" @click="toMessage">
-            留言
-          </li>
+          <li class="sub-item" @click="toMessage">留言</li>
+          <li class="sub-item" @click="toComic">我的追番</li>
         </ul>
       </div>
     </div>
@@ -42,7 +42,11 @@
         title="菜单"
         @click="showMenu"
       />
-      <side-menu :isShow="isShowMenu" :categories="categories" @hideMenu="hideMenu" />
+      <side-menu
+        :isShow="isShowMenu"
+        :categories="categories"
+        @hideMenu="hideMenu"
+      />
     </div>
     <login />
   </div>
@@ -61,13 +65,16 @@ export default {
       isShowMenu: false,
       oldscroll: 0,
       isUp: false,
-      isTop: true
+      isTop: true,
     };
   },
   computed: {
     isSmallScreen() {
       return this.$store.state.isSmallScreen;
     },
+    isContent() {
+      return this.$route.name === "Content"
+    }
   },
   mounted() {
     getCategory().then((res) => {
@@ -87,13 +94,19 @@ export default {
     toMessage() {
       this.$router.push("/home/messages");
     },
+    toFriends() {
+      this.$router.push("/home/friends");
+    },
+    toComic() {
+      this.$router.push("/home/mycomic");
+    },
     showMenu() {
       this.isShowMenu = true;
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
     },
     hideMenu() {
       this.isShowMenu = false;
-      document.body.style.overflow = "auto"
+      document.body.style.overflow = "auto";
     },
     handleScroll() {
       let scrollTop =
@@ -109,7 +122,7 @@ export default {
 </script>
 
 <style scoped>
-.no-header {
+.header-color {
   background-color: #5fa7cc;
 }
 
@@ -211,6 +224,7 @@ export default {
   white-space: nowrap;
   padding: 5px 20px;
   font-size: 20px;
+  text-align: center;
 }
 
 .sub-item:hover {

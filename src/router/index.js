@@ -6,6 +6,7 @@ const Home = () =>
 const Account = () =>
   import('@/views/Account.vue')
 
+
 // 二级页面(Blog)
 const Blog = () =>
   import('@/views/home/Blog.vue')
@@ -15,6 +16,11 @@ const Messages = () =>
   import('@/views/home/Messages.vue')
 const Category = () =>
   import('@/views/home/Category.vue')
+const Friends = () =>
+  import('@/views/home/Friends.vue')
+const MyComic = () =>
+  import('@/views/home/MyComic.vue')
+
 
 // 二级页面(Profile)
 const AccountIndex = () =>
@@ -49,6 +55,16 @@ const routes = [{
     path: 'category/:id',
     name: 'Category',
     component: Category
+  }, {
+    path: 'friends',
+    name: 'Friends',
+    component: Friends
+  }, {
+    path: 'mycomic',
+    component: MyComic
+  }, {
+    path: 'mycomic/:id',
+    component: MyComic
   }],
 }, {
   path: '/account',

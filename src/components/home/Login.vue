@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { setLogout } from "@/network/blog.js";
+import { setLogout } from "@/network/info.js";
 export default {
   name: "Login",
   components: {},
@@ -101,7 +101,7 @@ export default {
   margin-left: -105px;
   padding-top: 48px;
   border-radius: 8px;
-  background-color: #f6f6f6;
+  background-color: #407096;
   z-index: 9;
   visibility: hidden;
   opacity: 0;
@@ -150,10 +150,9 @@ export default {
 }
 
 .account-name {
-  color: #2b577b;
+  color: #66ccff;
   font-weight: bold;
   font-size: 20px;
-  font-family: fantasy;
 }
 
 .account div:hover {

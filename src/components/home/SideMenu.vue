@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { getSiteInfo } from "@/network/blog.js";
+import { getSiteInfo } from "@/network/info.js";
 export default {
   name: "SideMenu",
   props: ["isShow", "categories"],

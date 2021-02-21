@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { changeUserInfo } from "@/network/blog";
+import { changeUserInfo } from "@/network/info";
 export default {
   name: "AccountInfo",
   components: {},

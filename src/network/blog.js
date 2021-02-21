@@ -1,38 +1,6 @@
 import { requests } from './index'
 
 
-export function getSiteInfo() {
-  return requests({
-    url: '/get_site_info',
-  })
-}
-
-
-export function isLogin() {
-  return requests({
-    url: '/is_login',
-  })
-}
-
-export function setLogout() {
-  return requests({
-    url: '/logout',
-  })
-}
-
-export function getIlove() {
-  return requests({
-    url: '/get_i_love',
-  })
-}
-
-export function getSongInfoAndLrc(rid) {
-  return requests({
-    url: '/get_songinfoandlrc',
-    params: { rid }
-  })
-}
-
 export function getBlog(pn = 1, rn = 5) {
   return requests({
     url: '/get_blog',
@@ -51,12 +19,6 @@ export function getComment(aid) {
   return requests({
     url: '/get_blog_comment',
     params: { aid, }
-  })
-}
-
-export function getUserInfo() {
-  return requests({
-    url: '/get_userinfo'
   })
 }
 
@@ -105,25 +67,3 @@ export function addMessage(message) {
     data: { message }
   })
 }
-
-
-export function changeUserInfo(userinfo) {
-  return requests({
-    url: '/change_userinfo',
-    method: 'post',
-    data: userinfo
-  })
-}
-
-export function changeAvatar(data) {
-  return requests({
-    url: '/change_avatar',
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    },
-    method: 'post',
-    data: data
-  })
-}
-
-
