@@ -39,7 +39,6 @@
 import Left from "@/components/home/Left.vue";
 import Right from "@/components/home/Right.vue";
 import Headers from "@/components/home/Headers.vue";
-import Snow from "@/components/common/Snow.vue";
 
 export default {
   name: "Home",
@@ -54,8 +53,7 @@ export default {
   components: {
     Left,
     Right,
-    Headers,
-    Snow,
+    Headers
   },
 };
 </script>

@@ -2,11 +2,7 @@
   <div class="right">
     <div class="notice">
       <h4>公告栏</h4>
-      <div class="notice-text">
-        开发测试中...
-        <br />
-        时间2021年1月27日14:19:34
-      </div>
+      <div class="notice-text">暂无公告</div>
     </div>
     <message />
   </div>
@@ -16,7 +12,7 @@
 import Message from "@/components/common/Message.vue";
 export default {
   components: {
-    Message
+    Message,
   },
 };
 </script>
@@ -36,7 +32,7 @@ h4 {
 
 .notice {
   width: 100%;
-  height: auto;
+  min-height: 130px;
   background-color: white;
   opacity: 0.7;
   margin-bottom: 40px;
@@ -44,8 +40,6 @@ h4 {
 }
 
 .notice-text {
-  padding-left: 10px;
-  padding-bottom: 20px;
+  padding: 5px 10px 20px;
 }
-
 </style>

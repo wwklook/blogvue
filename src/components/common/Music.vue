@@ -300,7 +300,7 @@ input {
 }
 
 .p_ul {
-  height: 350px;
+  height: 380px;
   overflow-y: auto;
 }
 
