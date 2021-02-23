@@ -3,6 +3,24 @@
     <headers />
     <div class="home" v-show="isContent">
       <h1 class="site-name">无聊look的个人博客</h1>
+      <vue-particles
+        class="particle"
+        color="#fff"
+        :particleOpacity="0.7"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#fff"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0.4"
+        :linesDistance="150"
+        :moveSpeed="3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="push"
+      />
     </div>
     <div class="main">
       <left v-show="!isSmallScreen" />
@@ -13,6 +31,7 @@
       </div>
       <right v-show="isContent && !isSmallScreen" />
     </div>
+    <!-- <snow /> -->
   </div>
 </template>
 
@@ -20,6 +39,7 @@
 import Left from "@/components/home/Left.vue";
 import Right from "@/components/home/Right.vue";
 import Headers from "@/components/home/Headers.vue";
+import Snow from "@/components/common/Snow.vue";
 
 export default {
   name: "Home",
@@ -35,6 +55,7 @@ export default {
     Left,
     Right,
     Headers,
+    Snow,
   },
 };
 </script>
@@ -48,12 +69,20 @@ export default {
 .home
   width: 100%
   height: 50vh
-  background-color: #66ccff
+  background: url("~@/assets/home/snow.jpg")
+  position: relative
   display: flex
   justify-content: center
   align-items: center
   border-bottom-left-radius: 20px
   border-bottom-right-radius: 20px
+
+.particle
+  position: absolute
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
 
 .site-name
   color: #fff

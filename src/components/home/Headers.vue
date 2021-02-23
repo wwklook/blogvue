@@ -123,7 +123,7 @@ export default {
 
 <style scoped>
 .header-color {
-  background-color: #5fa7cc;
+  background-color: #87909a;
 }
 
 .hide-header {

@@ -85,6 +85,7 @@ export default {
     },
     toMessage() {
       this.$router.push("/home/messages");
+      this.hideMenu();
     },
     hideMenu() {
       this.$emit("hideMenu");

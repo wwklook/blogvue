@@ -5,11 +5,12 @@ import store from './store'
 
 import hljs from "highlight.js";
 import { isLogin, getUserInfo } from "@/network/info.js";
+import VueParticles from "vue-particles";
 
 const app = createApp(App);
 
 app.config.productionTip = false;
-app.use(store).use(router).mount('#app');
+app.use(store).use(router).use(VueParticles).mount('#app');
 
 app.$store = store;
 app.directive("highlight", function (el) {
