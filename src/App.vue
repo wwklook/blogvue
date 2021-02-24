@@ -15,6 +15,7 @@ body
   background: #e6e6e6
   background-attachment: fixed
   background-size: cover
+  @include font-family
 
 a
   text-decoration: none

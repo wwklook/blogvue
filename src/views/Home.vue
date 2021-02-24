@@ -44,7 +44,8 @@ export default {
   name: "Home",
   computed: {
     isContent() {
-      return this.$route.name == "Content";
+      let allow = ['Content', 'Category', 'Tag']
+      return allow.indexOf(this.$route.name) !== -1;
     },
     isSmallScreen() {
       return this.$store.state.isSmallScreen;

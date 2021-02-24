@@ -1,8 +1,8 @@
 <template>
-  <div class="context" @click="toContext">
-    <img class="bg-img" :src="'https://www.wwklook.com/' + data.img" />
-    <div class="title">{{ data.title }}</div>
-    <div class="summary" :class="{ 'no-hidden': isSmallScreen }">
+  <div class="context">
+    <img class="bg-img" :src="'https://www.wwklook.com/' + data.img" @click="toContext" />
+    <div class="title" @click="toContext">{{ data.title }}</div>
+    <div class="summary" :class="{ 'no-hidden': isSmallScreen }" @click="toContext">
       {{ data.summary }}
     </div>
     <div class="info" :class="{ 'no-hidden': isSmallScreen }">
@@ -10,8 +10,13 @@
       <span> {{ formatTime(data.create_time) }}</span>
       <img src="@/assets/blog/watch.svg" title="阅读数" />
       <span> {{ data.read_number }}次阅读</span>
-      <div class="tag" v-for="(v, k) in data.tags.slice(0, 5)" :key="k">
-        {{ v }}
+      <div
+        class="tag"
+        v-for="tag in data.tags.slice(0, 5)"
+        :key="tag.id"
+        @click="toTag(tag.id)"
+      >
+        {{ tag.name }}
       </div>
     </div>
   </div>
@@ -35,6 +40,9 @@ export default {
     toContext() {
       this.$router.push("/home/blog/" + this.data.blog_id);
     },
+    toTag(tid) {
+      this.$router.push({ name: "Tag", query: { tid } });
+    },
   },
 };
 </script>
@@ -53,7 +61,6 @@ export default {
   position: relative
   overflow: hidden
   margin-bottom: 40px
-
 
   &:hover
     box-shadow: 0 0 25px #adadad, 0 0 25px #adadad, 0 0 25px #adadad, 0 0 25px #adadad
@@ -77,7 +84,7 @@ export default {
   position: absolute
   white-space: nowrap
   top: 150px
-  
+
 .summary
   opacity: 0
   transition: 0.3s
@@ -89,7 +96,7 @@ export default {
 @media screen and (max-width: 450px)
   .title
     font-size: 2rem
-  .summary 
+  .summary
     font-size: $font-size-sm
 
 .info
@@ -106,12 +113,10 @@ export default {
   display: flex
   align-items: center
 
-
   & img
     margin-right: 7px
     width: 20px
     height: 20px
-
 
   & span
     margin-right: 30px
@@ -139,7 +144,6 @@ export default {
   padding: 2px 8px
   margin-right: 10px
   transition: 0.2s
-
 
   &:hover
     background-color: #cccccc

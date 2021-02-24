@@ -16,6 +16,8 @@ const Messages = () =>
   import('@/views/home/Messages.vue')
 const Category = () =>
   import('@/views/home/Category.vue')
+const Tag = () =>
+  import('@/views/home/Tag.vue')
 const Friends = () =>
   import('@/views/home/Friends.vue')
 const MyComic = () =>
@@ -55,6 +57,10 @@ const routes = [{
     path: 'category/:id',
     name: 'Category',
     component: Category
+  }, {
+    path: 'tag',
+    name: 'Tag',
+    component: Tag
   }, {
     path: 'friends',
     name: 'Friends',

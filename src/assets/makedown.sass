@@ -1,18 +1,20 @@
 
 /* 代码框样式 */
-li 
+li
   list-style: decimal
 
 pre
   position: relative
   padding-left: 25px
-  background: #7b7b7b !important
+  background: #000 !important
   border-radius: 5px
   width: 90%
+  overflow: auto hidden
+  font-size: 15px
+  line-height: 20px
 
 code
   background: rgba(27,31,35,0.05) !important
-  padding: 4px
 
 blockquote
   padding: 0 1em
@@ -23,13 +25,13 @@ blockquote
   margin-left: 5px
 
 .hljs
-  background: #7b7b7b !important
+  background: #000 !important
   width: 95%
 
 .line-numbers-rows
   position: absolute
   pointer-events: none
-  top: 7px
+  top: 0
   left: -10px
   font-size: 100%
   width: 30px
@@ -51,120 +53,17 @@ blockquote
     display: block
     text-align: center
 
-/* 翻转 */
+.hljs, .hljs-tag, .hljs-subst
+  color: #abb2bf
 
-// .spinner
-//   width: 60px
-//   height: 60px
-//   background: #67CF22
-//   margin: 100px auto
-//   -webkit-animation: rotateplane 1.2s infinite ease-in-out
-//   animation: rotateplane 1.2s infinite ease-in-out
+.hljs-comment, .hljs-deletion, .hljs-meta
+  color: #999
 
-// @-webkit-keyframes rotateplane
-//   0% 
-//   -webkit-transform: perspective(220px)
+.hljs-keyword, .hljs-selector-tag, .hljs-name, .hljs-attr
+  color: #c678dd
 
-//   50% 
-//   -webkit-transform: perspective(220px) rotateY(180deg)
+.hljs-code, .hljs-title, .hljs-section, .hljs-selector-class
+  color: #61aeee
 
-//   100% 
-//   -webkit-transform: perspective(220px) rotateY(180deg) rotateX(180deg)
-
-// @keyframes rotateplane
-//   0%
-//     transform: perspective(120px) rotateY(0) rotateX(0)
-//     -webkit-transform: perspective(220px) rotateY(0) rotateX(0)
-
-//   50%
-//     transform: perspective(120px) rotateY(0) rotateX(-180.1deg)
-//     -webkit-transform: perspective(220px) rotateY(0) rotateX(-180.1deg)
-
-//   100%
-//     transform: perspective(120px) rotateY(-179.9deg) rotateX(-180deg)
-//     -webkit-transform: perspective(220px) rotateY(-179.9deg) rotateX(-180deg)
-
-// /* 流光特效
-//  <div class="streamer">
-//  <span></span>
-//  <span></span>
-//  <span></span>
-//  <span></span>
-//  text
-//  </div>
-// */
-
-// .streamer
-//   line-height: 49px
-//   text-align: center
-//   position: relative
-//   color: #03e9f4
-//   transition: 0.5s
-//   letter-spacing: 4px
-//   overflow: hidden
-
-//   & span
-//     position: absolute
-
-//   & span:nth-child(1)
-//     top: 0
-//     left: 0
-//     width: 100%
-//     height: 2px
-//     background: linear-gradient(90deg, transparent, #03e9f4)
-//     animation: animate1 1s linear infinite
-
-//   & span:nth-child(2)
-//     top: -100%
-//     right: 0
-//     width: 2px
-//     height: 100%
-//     background: linear-gradient(180deg, transparent, #03e9f4)
-//     animation: animate2 1s linear infinite
-//     animation-delay: 0.25s
-
-//   & span:nth-child(3)
-//     bottom: 0
-//     right: -100%
-//     width: 100%
-//     height: 2px
-//     background: linear-gradient(270deg, transparent, #03e9f4)
-//     animation: animate3 1s linear infinite
-//     animation-delay: 0.5s
-
-//   & span:nth-child(4)
-//     bottom: -100%
-//     left: 0
-//     width: 2px
-//     height: 100%
-//     background: linear-gradient(360deg, transparent, #03e9f4)
-//     animation: animate4 1s linear infinite
-//     animation-delay: 0.75s
-
-// @keyframes animate1
-//   0%
-//     left: -100%
-
-//   50%, 100%
-//     left: 100%
-
-// @keyframes animate2
-//   0%
-//     top: -100%
-
-//   50%, 100%
-//     top: 100%
-
-// @keyframes animate3
-//   0%
-//     right: -100%
-
-//   50%, 100%
-//     right: 100%
-
-// @keyframes animate4
-//   0%
-//     bottom: -100%
-
-//   50%, 100%
-//     bottom: 100%
+.hljs-string, .hljs-type, .hljs-built_in, .hljs-builtin-name, .hljs-selector-id, .hljs-selector-attr, .hljs-selector-pseudo, .hljs-addition, .hljs-variable, .hljs-template-variable
+  color: #690

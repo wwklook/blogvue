@@ -49,6 +49,18 @@ export function getArticleCategory(cid) {
   })
 }
 
+export function getArticleTag(pn = 1, tid) {
+  return requests({
+    url: '/get_article_tag',
+    params: { pn, tid }
+  })
+}
+
+export function getTags() {
+  return requests({
+    url: '/get_tag'
+  })
+}
 
 // POST请求
 

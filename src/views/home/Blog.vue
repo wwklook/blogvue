@@ -29,8 +29,13 @@
       </div>
       <div class="article-tag">
         <div class="tags">
-          <div class="tag" v-for="(v, k) in data.tags" :key="k">
-            {{ v }}
+          <div
+            class="tag"
+            v-for="item in data.tags"
+            :key="item.id"
+            @click="toTag(item.id)"
+          >
+            {{ item.name }}
           </div>
         </div>
         <div class="modified-time">
@@ -56,8 +61,6 @@
 // import 'highlightjs-line-numbers.js/src/highlightjs-line-numbers.js';
 import marked from "marked";
 import hljs from "highlight.js";
-import javascript from "highlight.js/lib/languages/javascript";
-import "highlight.js/styles/monokai-sublime.css";
 
 import {
   getBlogContent,
@@ -139,6 +142,9 @@ export default {
     },
     showCommentPost() {
       this.isShowCommentPost = !this.isShowCommentPost;
+    },
+    toTag(tid) {
+      this.$router.push({ name: "Tag", query: { tid } });
     },
   },
 };
