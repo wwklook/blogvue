@@ -82,7 +82,7 @@ export default {
 .account
   width: 980px
   height: 100%
-  margin: 10px auto 100px
+  margin: 100px auto
   border: 1px solid #e1e2e5
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.14)
   background: #fafafa
