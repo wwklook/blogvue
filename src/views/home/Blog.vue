@@ -13,7 +13,7 @@
         <span> {{ data.like_number }}人点赞</span>
       </div>
     </div>
-    <div v-html="content" v-highlight></div>
+    <div class="markdown" v-html="content" v-highlight></div>
     <div class="article-footer">
       <div class="article-btn">
         <div class="btn" :class="{ active: isLike }" @click.once="likes">
