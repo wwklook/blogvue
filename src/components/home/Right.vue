@@ -61,7 +61,7 @@ h4 {
   width: 100%;
   min-height: 130px;
   background-color: white;
-  opacity: 0.7;
+  opacity: 0.8;
   margin-bottom: 40px;
   border-radius: 8px;
 }
@@ -73,21 +73,38 @@ h4 {
 .tags {
   width: 100%;
   background-color: white;
-  opacity: 0.7;
+  opacity: 0.8;
   margin-bottom: 40px;
   border-radius: 8px;
 }
 
 .tag-item {
   display: inline-block;
-  background-color: #ddd;
   border-radius: 5px;
   padding: 5px 10px;
   margin: 5px 8px;
   cursor: pointer;
+  opacity: 0.85;
 }
 
 .tag-item:hover {
-  background-color: #ccc;
+  opacity: 1;
+}
+
+.tag-item:nth-child(5n) {
+  background-color: #66ccff;
+}
+
+.tag-item:nth-child(5n-1) {
+  background-color: #aab101;
+}
+.tag-item:nth-child(5n-2) {
+  background-color: #ff5757;
+}
+.tag-item:nth-child(5n-3) {
+  background-color: #5df327;
+}
+.tag-item:nth-child(5n-4) {
+  background-color: #ff5ee7;
 }
 </style>

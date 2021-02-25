@@ -47,7 +47,7 @@ h4 {
 .message {
   height: auto;
   background-color: white;
-  opacity: 0.7;
+  opacity: 0.8;
   margin-bottom: 40px;
   border-radius: 8px;
   display: flex;
